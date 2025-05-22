@@ -1,0 +1,10 @@
+#!/bin/sh
+
+while read local_ref local_sha remote_ref remote_sha
+do
+	set -e
+	githook-manager prepush --remoteName $1 --remoteUrl $2 \
+		--localRef $local_ref --localSha $local_sha --remoteRef $remote_ref --remoteSha $remote_sha \
+		< /dev/tty
+done
+exit 0
